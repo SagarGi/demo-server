@@ -1,11 +1,14 @@
 FROM node:latest
 
-WORKDIR /app/demo/demo-server
+WORKDIR /demo-server
+
+COPY package*.json ./
 
 COPY . .
 
+RUN npm install
+
 EXPOSE 3001
 
-RUN npm i
 
 CMD ["npm", "start"]

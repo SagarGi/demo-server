@@ -2,24 +2,20 @@ version: "3.8"
 
 services:
   db:
-    image: mysql:5.7
-    container_name: db
-    restart: always
+    build: ./Database
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: pass
       MYSQL_DATABASE: demodb
-      MYSQL_USER: user
-      MYSQL_PASSWORD: pass
-    ports:
-      - "3306:3306"
+    restart: always
 
   server:
     image: demo-server
+    build: .
     environment:
       - PORT=3001
       - DBHOST=db
-      - DBUSER=user
       - DBPORT=3306
+      - DBUSER=root
       - DBNAME=demodb
       - DBPASSWORD=pass
     restart: always
