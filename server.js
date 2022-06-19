@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-require("./Routes")(app);
+require("./Routes/index")(app);
 
 app.listen(port, (err) => {
   if (!err) {

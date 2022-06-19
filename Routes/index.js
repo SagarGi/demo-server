@@ -1,9 +1,12 @@
 module.exports = (app) => {
-  const userRoute = require("./users");
+  const userApi = require("../controller/users");
+  const router = require("express").Router();
 
-  app.all("/", (req, res) => {
+  router.all("/", (req, res) => {
     res.send("OK");
   });
-
-  app.use("/", userRoute);
+  router.get("/users", userApi.getUserSection);
+  router.get("/users/all", userApi.getAllUsers);
+  router.post("/users/adduser", userApi.addUser);
+  app.use("/", router);
 };
