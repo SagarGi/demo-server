@@ -6,13 +6,14 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: pass
       MYSQL_DATABASE: demodb
+    #for data persistent
     volumes:
       - ./mysql-data-dump:/var/lib/mysql
     restart: always
 
   server:
+    #build your image locally or push the image to dockerhub abd use image name accordingly
     image: demo-server
-    build: .
     environment:
       - PORT=3001
       - DBHOST=db
@@ -26,6 +27,17 @@ services:
     depends_on:
       - db
 
+  web:
+    #build your image locally or push the image to dockerhub abd use image name accordingly
+    image: demo-web
+    environment:
+      - REACT_APP_SERVER_URL=http://0.0.0.0:3001
+    ports:
+      - 8080:8080
+    depends_on:
+      - server
+
+  # mysql client
   pma:
     depends_on:
       - db
