@@ -13,7 +13,7 @@ services:
 
   server:
     #build your image locally or push the image to dockerhub abd use image name accordingly
-    image: demo-server
+    image: sagar4321/demo-server
     environment:
       - PORT=3001
       - DBHOST=db
@@ -29,9 +29,9 @@ services:
 
   web:
     #build your image locally or push the image to dockerhub abd use image name accordingly
-    image: demo-web
+    image: sagar4321/demo-web
     environment:
-      - REACT_APP_SERVER_URL=http://0.0.0.0:3001
+      - SERVER_URL=http://0.0.0.0:3001
     ports:
       - 8080:8080
     depends_on:
