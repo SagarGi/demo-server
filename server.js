@@ -5,7 +5,7 @@ const cors = require("cors");
 require("dotenv").config({ path: __dirname + "/.env" });
 
 // require("./Database/connection");
-const port = process.env["PORT"] || 3000;
+const port = process.env["PORT"] || 3001;
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));

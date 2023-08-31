@@ -1,4 +1,3 @@
-const express = require("express");
 const connection = require("../Database/connection");
 
 exports.getUserSection = (req, res) => {
