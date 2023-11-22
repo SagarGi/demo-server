@@ -4,7 +4,7 @@ services:
   db:
     build: ./Database
     environment:
-      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: demodb
     #for data persistent
     volumes:
@@ -20,7 +20,7 @@ services:
       - DBPORT=3306
       - DBUSER=root
       - DBNAME=demodb
-      - DBPASSWORD=pass
+      - DBPASSWORD=root
     restart: always
     ports:
       - "3001:3001"
